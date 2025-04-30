@@ -22,8 +22,8 @@ desorption_prefactor = pre_factor_tait(temperature, mass, A, rot_sim, inertia_mo
 
 ########################### DATAFRAME DEFINITION ###################################################################
 
-coordinates_sulphur_BE_site = "/home/tesisti-pu/vittorio/KMC/NEW_PAPER_COEFF_DIFF/sulfur_positions.txt"
-csv_file_path = '/home/tesisti-pu/vittorio/KMC/NEW_PAPER_COEFF_DIFF/NEW_FINAL.csv'
+coordinates_sulphur_BE_site = "/sulfur_positions.txt"
+csv_file_path = '/NEW_FINAL.csv'
 df_diff_total = pd.read_csv(csv_file_path, index_col=False)
 df_diff_total = df_diff_total[(df_diff_total["react_to_prod_ZPE"] > 0) & (df_diff_total["prod_to_react_ZPE"] > 0) & (df_diff_total["Freq_imm_TS"] < 0)]
 exclude_numbers = ["13_271", "13_432", "271_337", "271_432", "337_432", "26_78"]
@@ -58,14 +58,14 @@ for index, row in df_diff_total.iterrows():
     r_site, p_site = row['Folder'].split('_')
     r_index = site_to_index[r_site] + 1
     p_index = site_to_index[p_site] + 1
-    r_to_p_barrier = (row['r_to_p_barrier'] * 0.78) * 1000
-    p_to_r_barrier = (row['p_to_r_barrier'] * 0.78) * 1000
+    r_to_p_barrier = (row['r_to_p_barrier'] * 0.78) * 1000  #CONVERSION FACTOR FOR THE BARRIER. AS DEFINED IN THE PAPER
+    p_to_r_barrier = (row['p_to_r_barrier'] * 0.78) * 1000  #CONVERSION FACTOR FOR THE BARRIER. AS DEFINED IN THE PAPER
     prefactor = row['Freq_imm_TS'] * C
     r_to_p_rate = -prefactor * np.exp(-r_to_p_barrier / (R * temperature))
     p_to_r_rate = -prefactor * np.exp(-p_to_r_barrier / (R * temperature))
     diff_des_barriers[r_index, p_index] = r_to_p_rate
     diff_des_barriers[p_index, r_index] = p_to_r_rate
-    current_BE = (row['BE0_post_react'] * 0.76) * 1000
+    current_BE = (row['BE0_post_react'] * 0.76) * 1000      #CONVERSION FACTOR FOR THE BINDING. AS DEFINED IN THE PAPER
     encountered_r_sites.add(r_site)
     site_max_BE[r_site] = max(site_max_BE.get(r_site, 0), current_BE)
 
@@ -75,7 +75,7 @@ missing_sites = set(unique_sites) - encountered_r_sites
 for missing_site in missing_sites:
     potential_matches = df_diff_total[df_diff_total['Folder'].str.endswith(f'_{missing_site}')]
     if not potential_matches.empty:
-        site_max_BE[missing_site] = (potential_matches['BE0_post_prod'].max() * 0.76) * 1000
+        site_max_BE[missing_site] = (potential_matches['BE0_post_prod'].max() * 0.76) * 1000  #CONVERSION FACTOR FOR THE BINDING. AS DEFINED IN THE PAPER
 
 
 # Set diagonal elements to the maximum BE(0)_post_react values
