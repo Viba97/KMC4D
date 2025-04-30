@@ -10,3 +10,7 @@ To run the code is necessary to install the following packages:
 - pandas
 - ase
 
+## Script structure
+
+The 
+
