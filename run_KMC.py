@@ -11,7 +11,7 @@ final_time = 600.0
 final_cycle_count = 10e8
 print_interval = 100000
 
-########## CONDITION FOR COMPUTING THE PREFACTOR USING TAIT(2005) OR HERBST HASEGAWA(1992) ############
+########## CONDITION FOR COMPUTING THE PREFACTOR USING TAIT(2005) ############
 
 A = 1e-19  # Surface per adsorbed molecules
 mol = read('/home/tesisti-pu/vittorio/KMC/WORKING_without_diffusion_coeff/H2S_opt.xyz')
