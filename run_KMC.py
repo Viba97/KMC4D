@@ -14,7 +14,7 @@ print_interval = 100000
 ########## CONDITION FOR COMPUTING THE PREFACTOR USING TAIT(2005) ############
 
 A = 1e-19  # Surface per adsorbed molecules
-mol = read('/home/tesisti-pu/vittorio/KMC/WORKING_without_diffusion_coeff/H2S_opt.xyz')
+mol = read('/H2S_opt.xyz')
 mass = mol.get_masses().sum()
 inertia_moments = mol.get_moments_of_inertia()
 rot_sim = 2
