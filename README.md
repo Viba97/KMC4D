@@ -22,7 +22,7 @@ The main script run_KMC.py take advantage of several files that should always be
 
 ## Associated publications
 
-Please reffer to the following publication to cite our work or retrieve the info:
+Please refer to the following publication to cite our work or retrieve the info:
 
 
 ## Acknowledgments
