@@ -7,9 +7,9 @@ from KMC_functions import *
 
 R = 8.314  # J/(mol·K)
 temperature = 15
-final_time = 600.0
-final_cycle_count = 10e8
-print_interval = 100000
+final_time = 600.0 # FINAL TIME AT WHICH INTERRUPT THE SIMULATIONS [SECONDS]
+final_cycle_count = 10e8 # NUMBER OF KMC CYCLCES BEFORE INTERRUPTING THE SIMULATION
+print_interval = 100000 # NUMBER OF CYCLE FOR EACH BE SIMULATION TO PRINT INFORMATION, USEFUL TO REDUCE THE OUTPUT SIZE
 
 ########## CONDITION FOR COMPUTING THE PREFACTOR USING TAIT(2005) ############
 
