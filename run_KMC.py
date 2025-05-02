@@ -25,8 +25,14 @@ desorption_prefactor = pre_factor_tait(temperature, mass, A, rot_sim, inertia_mo
 coordinates_sulphur_BE_site = "/sulfur_positions.txt"
 csv_file_path = '/NEW_FINAL.csv'
 df_diff_total = pd.read_csv(csv_file_path, index_col=False)
+
+#SELECTING ONLY THE PATH WITH A POSITIVE DIFFUSION BARRIER AND A NEGATIVE EIGENVECTOR ASSOCIATED TO THE TRANSITION STATE
+#CONDITION ON THE BE IS NOT NECESSARY BEACUSE THE DATAFRAME WAS CREATED FROM THE PUBLISHED VALUES (BARIOSCO ET AL. 2024, MNRAS)
 df_diff_total = df_diff_total[(df_diff_total["react_to_prod_ZPE"] > 0) & (df_diff_total["prod_to_react_ZPE"] > 0) & (df_diff_total["Freq_imm_TS"] < 0)]
+
+#CONNECTED SITES EXCLUDED DUE TO THE LOW CLOSENESS CENTRALITY VALUES
 exclude_numbers = ["13_271", "13_432", "271_337", "271_432", "337_432", "26_78"]
+
 df_diff_total = df_diff_total[~df_diff_total['Folder'].isin(exclude_numbers)]
 
 site_max_BE = {}
