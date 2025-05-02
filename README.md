@@ -20,3 +20,12 @@ The main script run_KMC.py take advantage of several files that should always be
 - sulfur_positions.txt --> position of the adsorbate, used to compute the diffusion coefficient
 
 
+## Associated publications
+
+Please reffer to the following publication to cite our work or retrieve the info:
+
+
+## Acknowledgments
+
+This project has received funding within the European Union’s Horizon 2020 research and innovation programme from the European Research Council (ERC) for the project, ”Quantum Chemistry on Interstellar Grains” (QUANTUMGRAIN), grant agreement No 865657.
+
