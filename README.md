@@ -14,9 +14,9 @@ To run the code is necessary to install the following packages:
 
 The main script run_KMC.py take advantage of several files that should always be located in the same path as the one of run_KMC.py. The files are organized as follow:
 
-- run_KMC.py
-- KMC_functions.py
-- NEW_FINAL_git.csv
-- sulfur_positions.txt
+- run_KMC.py --> Main code to be runned
+- KMC_functions.py --> Series of functions used by the main code
+- NEW_FINAL_git.csv --> CSV file in which are stored the information about the diffusion and desorption barriers
+- sulfur_positions.txt --> position of the adsorbate, used to compute the diffusion coefficient
 
 
